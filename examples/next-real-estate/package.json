@@ -1,0 +1,29 @@
+{
+  "name": "next-real-estate",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "predev": "pnpm --filter @agentnav/core build && pnpm --filter @agentnav/scanner build && pnpm --filter @agentnav/react build && pnpm --filter @agentnav/next build",
+    "dev": "next dev",
+    "prebuild": "pnpm --filter @agentnav/core build && pnpm --filter @agentnav/scanner build && pnpm --filter @agentnav/react build && pnpm --filter @agentnav/next build",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@agentnav/core": "workspace:*",
+    "@agentnav/next": "workspace:*",
+    "@agentnav/react": "workspace:*",
+    "@agentnav/scanner": "workspace:*",
+    "next": "^14.2.28",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "@types/react": "^18.3.20",
+    "@types/react-dom": "^18.3.6",
+    "typescript": "^5.8.3"
+  }
+}

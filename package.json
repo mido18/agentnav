@@ -1,0 +1,33 @@
+{
+  "name": "agentnav",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Agent-readiness layer for websites.",
+  "type": "module",
+  "scripts": {
+    "build": "pnpm -r --filter './packages/**' build && pnpm --filter next-real-estate build",
+    "test": "pnpm -r --filter './packages/**' test",
+    "test:e2e": "playwright test",
+    "lint": "eslint . --max-warnings 0",
+    "format": "prettier --write .",
+    "agentnav": "pnpm --filter @agentnav/core build && pnpm --filter @agentnav/scanner build && pnpm --filter @agentnav/cli build && node packages/cli/dist/index.js"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.25.1",
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.15.3",
+    "@types/react": "^18.3.20",
+    "@types/react-dom": "^18.3.6",
+    "eslint": "^9.25.1",
+    "eslint-config-prettier": "^10.1.2",
+    "jsdom": "^26.1.0",
+    "prettier": "^3.5.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.31.0",
+    "vitest": "^3.1.2"
+  },
+  "packageManager": "pnpm@10.10.0"
+}

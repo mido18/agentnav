@@ -1,0 +1,31 @@
+{
+  "name": "@agentnav/scanner",
+  "version": "0.1.0",
+  "description": "Browser runtime scanner for AgentNav.",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./browser": "./dist/index.global.js"
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "lint": "eslint src --max-warnings 0"
+  },
+  "dependencies": {
+    "@agentnav/core": "workspace:*"
+  },
+  "devDependencies": {
+    "jsdom": "^26.1.0",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.2"
+  }
+}

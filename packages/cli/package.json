@@ -1,6 +1,6 @@
 {
   "name": "@agentnav/cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "AgentNav CLI for scanning, scoring, initializing, and building AI agent-readiness metadata for websites.",
   "type": "module",
   "license": "MIT",
@@ -25,7 +25,7 @@
     "developer-tools"
   ],
   "bin": {
-    "agentnav": "./dist/index.js"
+    "agentnav": "dist/index.js"
   },
   "files": [
     "dist",

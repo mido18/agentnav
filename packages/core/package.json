@@ -1,6 +1,6 @@
 {
   "name": "@agentnav/core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Core schemas, generators, safety rules, and readiness scoring for AgentNav, the agent-readiness layer for React and Next.js.",
   "type": "module",
   "license": "MIT",

@@ -1,6 +1,6 @@
 {
   "name": "@agentnav/next",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Next.js route helpers for publishing llms.txt, agent.json, actions.json, and JSON-LD for AI agent-ready sites.",
   "type": "module",
   "license": "MIT",

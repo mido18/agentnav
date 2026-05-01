@@ -1,6 +1,6 @@
 {
   "name": "@agentnav/scanner",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Browser runtime scanner that scores pages and detects agent-readable metadata, actions, forms, JSON-LD, and warnings.",
   "type": "module",
   "license": "MIT",

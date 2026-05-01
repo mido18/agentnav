@@ -7,3 +7,6 @@ playwright-report/
 .turbo/
 .DS_Store
 *.tsbuildinfo
+.env
+.env.*
+.npmrc

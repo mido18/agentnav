@@ -7,7 +7,7 @@ import { scoreUrl } from "./commands/score";
 
 const program = new Command();
 
-program.name("agentnav").description("AgentNav command line tools").version("0.1.0");
+program.name("agentnav").description("AgentNav command line tools").version("0.1.1");
 
 program
   .command("init")

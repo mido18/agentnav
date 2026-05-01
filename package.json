@@ -1,6 +1,6 @@
 {
   "name": "agentnav",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Lighthouse for AI agents. Make React and Next.js websites readable, navigable, actionable, and safer for AI agents.",
   "type": "module",
@@ -32,6 +32,8 @@
     "test:e2e": "playwright test",
     "lint": "eslint . --max-warnings 0",
     "format": "prettier --write .",
+    "release:dry-run": "pnpm -r --filter './packages/**' publish --dry-run --access public --no-git-checks",
+    "release:publish": "pnpm -r --filter './packages/**' publish --access public",
     "agentnav": "pnpm --filter @agentnav/core build && pnpm --filter @agentnav/scanner build && pnpm --filter @agentnav/cli build && node packages/cli/dist/index.js"
   },
   "devDependencies": {

@@ -1,8 +1,29 @@
 {
   "name": "@agentnav/scanner",
   "version": "0.1.0",
-  "description": "Browser runtime scanner for AgentNav.",
+  "description": "Browser runtime scanner that scores pages and detects agent-readable metadata, actions, forms, JSON-LD, and warnings.",
   "type": "module",
+  "license": "MIT",
+  "author": "AgentNav contributors",
+  "homepage": "https://github.com/mido18/agentnav#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mido18/agentnav.git",
+    "directory": "packages/scanner"
+  },
+  "bugs": {
+    "url": "https://github.com/mido18/agentnav/issues"
+  },
+  "keywords": [
+    "agentnav",
+    "ai-agents",
+    "agent-readiness",
+    "browser-scanner",
+    "llms-txt",
+    "json-ld",
+    "forms",
+    "developer-tools"
+  ],
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -13,6 +34,14 @@
       "require": "./dist/index.cjs"
     },
     "./browser": "./dist/index.global.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "package.json"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "build": "tsup",

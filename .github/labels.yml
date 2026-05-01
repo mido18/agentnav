@@ -1,0 +1,24 @@
+- name: good first issue
+  color: "7057ff"
+  description: Small scoped contribution for new contributors.
+- name: adapters
+  color: "0e8a16"
+  description: Framework adapters beyond React and Next.js.
+- name: examples
+  color: "1d76db"
+  description: Example apps, demos, and integration samples.
+- name: docs
+  color: "0075ca"
+  description: Documentation, guides, launch copy, and tutorials.
+- name: safety
+  color: "d93f0b"
+  description: Safety model, confirmation rules, risky actions, and warnings.
+- name: scanner
+  color: "fbca04"
+  description: Runtime scanner and DOM inference behavior.
+- name: scoring
+  color: "c5def5"
+  description: Agent-readiness score, grade, and warning improvements.
+- name: metadata
+  color: "bfd4f2"
+  description: llms.txt, agent.json, actions.json, JSON-LD, and data-agent output.

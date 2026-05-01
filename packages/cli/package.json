@@ -1,10 +1,39 @@
 {
   "name": "@agentnav/cli",
   "version": "0.1.0",
-  "description": "Command line tools for AgentNav.",
+  "description": "AgentNav CLI for scanning, scoring, initializing, and building AI agent-readiness metadata for websites.",
   "type": "module",
+  "license": "MIT",
+  "author": "AgentNav contributors",
+  "homepage": "https://github.com/mido18/agentnav#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mido18/agentnav.git",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/mido18/agentnav/issues"
+  },
+  "keywords": [
+    "agentnav",
+    "ai-agents",
+    "agent-readiness",
+    "cli",
+    "lighthouse",
+    "llms-txt",
+    "nextjs",
+    "developer-tools"
+  ],
   "bin": {
     "agentnav": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "package.json"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "build": "tsup",

@@ -1,8 +1,29 @@
 {
   "name": "@agentnav/core",
   "version": "0.1.0",
-  "description": "Core types, schemas, generators, warnings, and scoring for AgentNav.",
+  "description": "Core schemas, generators, safety rules, and readiness scoring for AgentNav, the agent-readiness layer for React and Next.js.",
   "type": "module",
+  "license": "MIT",
+  "author": "AgentNav contributors",
+  "homepage": "https://github.com/mido18/agentnav#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mido18/agentnav.git",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/mido18/agentnav/issues"
+  },
+  "keywords": [
+    "agentnav",
+    "ai-agents",
+    "agent-readiness",
+    "llms-txt",
+    "json-ld",
+    "typescript",
+    "schema-org",
+    "developer-tools"
+  ],
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -12,6 +33,14 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
     }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "package.json"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "build": "tsup",

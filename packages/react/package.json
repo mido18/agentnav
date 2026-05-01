@@ -1,8 +1,30 @@
 {
   "name": "@agentnav/react",
   "version": "0.1.0",
-  "description": "React components and provider for AgentNav metadata.",
+  "description": "React components for making websites agent-readable with data-agent attributes, safe actions, entities, fields, forms, and runtime scanning.",
   "type": "module",
+  "license": "MIT",
+  "author": "AgentNav contributors",
+  "homepage": "https://github.com/mido18/agentnav#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mido18/agentnav.git",
+    "directory": "packages/react"
+  },
+  "bugs": {
+    "url": "https://github.com/mido18/agentnav/issues"
+  },
+  "keywords": [
+    "react",
+    "nextjs",
+    "ai-agents",
+    "agent-readiness",
+    "llms-txt",
+    "json-ld",
+    "typescript",
+    "seo",
+    "accessibility"
+  ],
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -12,6 +34,14 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
     }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "package.json"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "build": "tsup",

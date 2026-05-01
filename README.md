@@ -1,12 +1,14 @@
 # AgentNav
 
-AgentNav is the agent-readiness layer for the web. It helps websites expose clear metadata, actions, forms, safety rules, and structured data so AI agents can navigate and act more reliably.
+**AgentNav is the agent-readiness layer for React and Next.js. It makes websites readable, navigable, actionable, and safer for AI agents.**
 
-Modern websites are optimized for human browsing. AgentNav adds a machine-readable layer that tells AI agents what a page is about, which entities and actions exist, which forms are present, and which actions require explicit human confirmation.
+Lighthouse for AI agents. SEO for AI agents, built for React and Next.js. Make your website agent-readable in minutes.
 
-## What It Generates
+![AgentNav social card](docs/marketing/assets/social-card.svg)
 
-AgentNav can expose:
+Modern websites are optimized for people. AI agents can read and click like people, but that is brittle: buttons are ambiguous, forms hide risk, metadata is scattered, and critical business actions are not machine-readable.
+
+AgentNav adds the missing layer:
 
 - `/llms.txt`
 - `/.well-known/agent.json`
@@ -14,46 +16,132 @@ AgentNav can expose:
 - Schema.org JSON-LD
 - `data-agent-*` DOM attributes
 - form metadata
+- safety and confirmation rules
 - an agent-readiness score
 - developer warnings and suggested fixes
 
+## Try It In 2 Minutes
+
+Install the React and Next.js packages:
+
+```bash
+pnpm add @agentnav/react @agentnav/next
+```
+
+Annotate one important action:
+
+```tsx
+import { AgentAction, AgentEntity, AgentField } from "@agentnav/react";
+
+export function ListingCard() {
+  return (
+    <AgentEntity type="real_estate_unit" id="villa-a" name="Villa Type A">
+      <h2>Villa Type A</h2>
+
+      <AgentField name="price" value={12500000} currency="EGP">
+        12,500,000 EGP
+      </AgentField>
+
+      <AgentAction
+        id="book_viewing"
+        type="book"
+        risk="booking"
+        requiresUserConfirmation
+        description="Book a viewing for Villa Type A"
+      >
+        <button>Book Viewing</button>
+      </AgentAction>
+    </AgentEntity>
+  );
+}
+```
+
+Expose metadata routes in Next.js:
+
+```ts
+// app/llms.txt/route.ts
+import config from "../../agentnav.config";
+import { createLlmsTxtRoute } from "@agentnav/next";
+
+export const GET = createLlmsTxtRoute(config);
+```
+
+Score the running site:
+
+```bash
+pnpm agentnav score http://localhost:3000/units
+```
+
+Example output:
+
+```txt
+Agent Readiness Score: 91/100 — A
+
+High priority fixes:
+1. No last-updated metadata found.
+```
+
+## Before And After
+
+Before AgentNav, an AI agent only sees a generic button:
+
+```html
+<button>Book Viewing</button>
+```
+
+After AgentNav, the same action is explicit and safer:
+
+```html
+<button
+  data-agent-action="book_viewing"
+  data-agent-action-type="book"
+  data-agent-risk="booking"
+  data-agent-requires-confirmation="true"
+>
+  Book Viewing
+</button>
+```
+
+Agents can now understand that this is a booking action and that a human must confirm before the appointment is submitted.
+
+## Why AgentNav
+
+AgentNav is for React and Next.js developers building SaaS, marketplaces, content sites, docs, ecommerce, real estate, and lead-generation websites that need to be understandable to AI agents.
+
+Use it when your website has:
+
+- important pages agents should understand
+- entities such as products, services, articles, events, listings, or FAQs
+- actions such as search, booking, contact, download, buy, or cancel
+- forms that collect personal data
+- safety rules around payment, booking, account changes, legal, medical, or destructive actions
+- a need to measure agent-readiness over time
+
+## Generated Files
+
+`/llms.txt` is a readable guide for agents. It lists important pages, allowed tasks, confirmation rules, disallowed actions, and action summaries. `llms.txt` is an emerging convention, not a guarantee that every agent will consume it.
+
+`/.well-known/agent.json` exposes site identity, policy, important pages, and related metadata file locations.
+
+`/.well-known/actions.json` exposes stable actions from config, explicit React annotations, forms, and high-confidence scanned actions. Low-confidence inferred actions are not published as stable actions.
+
 ## Packages
 
-- `@agentnav/core`: shared types, Zod schemas, generators, scoring, safety normalization, and warnings.
+- `@agentnav/core`: shared types, Zod schemas, generators, safety normalization, warnings, and scoring.
 - `@agentnav/scanner`: browser runtime scanner for the current page.
 - `@agentnav/react`: React provider and metadata annotation components.
 - `@agentnav/next`: Next.js config and route helpers.
 - `@agentnav/cli`: `init`, `scan`, `score`, and `build` commands.
 - `examples/next-real-estate`: working Next.js real estate example.
 
-## Install
-
-```bash
-pnpm install
-```
-
-Build everything:
-
-```bash
-pnpm build
-```
-
-Run tests and lint:
-
-```bash
-pnpm test
-pnpm lint
-pnpm test:e2e
-```
-
 ## React Usage
 
 Wrap the app with `AgentNavProvider` and annotate important entities, fields, actions, and forms.
 
 ```tsx
-import { AgentAction, AgentEntity, AgentField, AgentNavProvider } from "@agentnav/react";
+import { AgentNavProvider } from "@agentnav/react";
 
-export function App() {
+export function App({ children }: { children: React.ReactNode }) {
   return (
     <AgentNavProvider
       siteName="Hyde Park"
@@ -62,42 +150,10 @@ export function App() {
       enableRuntimeScanner
       enableDevOverlay
     >
-      <AgentEntity type="real_estate_unit" id="villa-a" name="Villa Type A">
-        <h2>Villa Type A</h2>
-        <AgentField name="price" value={12500000} currency="EGP">
-          12,500,000 EGP
-        </AgentField>
-        <AgentAction
-          id="book_viewing"
-          type="book"
-          risk="booking"
-          requiresUserConfirmation
-          description="Book a viewing for Villa Type A"
-        >
-          <button>Book Viewing</button>
-        </AgentAction>
-      </AgentEntity>
+      {children}
     </AgentNavProvider>
   );
 }
-```
-
-The rendered HTML includes attributes such as:
-
-```html
-<div data-agent-entity="real_estate_unit" data-agent-id="villa-a" data-agent-name="Villa Type A">
-  <span data-agent-field="price" data-agent-value="12500000" data-agent-currency="EGP">
-    12,500,000 EGP
-  </span>
-  <button
-    data-agent-action="book_viewing"
-    data-agent-action-type="book"
-    data-agent-risk="booking"
-    data-agent-requires-confirmation="true"
-  >
-    Book Viewing
-  </button>
-</div>
 ```
 
 ## Next.js Setup
@@ -132,14 +188,6 @@ export default defineAgentNavConfig({
 Add App Router route handlers:
 
 ```ts
-// app/llms.txt/route.ts
-import config from "../../agentnav.config";
-import { createLlmsTxtRoute } from "@agentnav/next";
-
-export const GET = createLlmsTxtRoute(config);
-```
-
-```ts
 // app/.well-known/agent.json/route.ts
 import config from "../../../agentnav.config";
 import { createAgentJsonRoute } from "@agentnav/next";
@@ -155,14 +203,6 @@ import { createActionsJsonRoute } from "@agentnav/next";
 export const GET = createActionsJsonRoute(config);
 ```
 
-## Generated Files
-
-`/llms.txt` is a human-readable Markdown guide for agents. It lists important pages, allowed tasks, confirmation rules, disallowed actions, and stable action summaries.
-
-`/.well-known/agent.json` exposes site identity, policy, important pages, and related metadata file locations.
-
-`/.well-known/actions.json` exposes stable actions from config, explicit React annotations, forms, and high-confidence scanned actions. Low-confidence inferred actions are not published as stable actions.
-
 ## Runtime Scanner
 
 `@agentnav/scanner` inspects the current browser page and returns an `AgentPage` object:
@@ -174,9 +214,7 @@ const page = scanCurrentPage();
 console.log(page.score.score, page.entities, page.actions, page.forms);
 ```
 
-It scans document metadata, canonical URL, navigation, JSON-LD, explicit `data-agent-*` attributes, actions, forms, labels, and basic heuristic entities.
-
-Invalid JSON-LD creates a warning instead of crashing.
+It scans document metadata, canonical URL, navigation, JSON-LD, explicit `data-agent-*` attributes, actions, forms, labels, and basic heuristic entities. Invalid JSON-LD creates a warning instead of crashing.
 
 ## Readiness Score
 
@@ -234,14 +272,7 @@ pnpm agentnav build
 
 `scan` opens a URL with Playwright and returns `AgentPage` JSON.
 
-`score` prints a compact readiness summary:
-
-```txt
-Agent Readiness Score: 91/100 — A
-
-High priority fixes:
-1. No last-updated metadata found.
-```
+`score` prints a compact readiness summary.
 
 `build` reads `agentnav.config.ts` and writes:
 
@@ -292,6 +323,10 @@ For Playwright e2e tests:
 pnpm exec playwright install chromium
 pnpm test:e2e
 ```
+
+## Launch Materials
+
+Launch copy, release notes, outreach templates, the demo script, and the social card live in `docs/marketing/`.
 
 ## Known Limitations
 

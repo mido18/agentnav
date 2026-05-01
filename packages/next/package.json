@@ -1,8 +1,30 @@
 {
   "name": "@agentnav/next",
   "version": "0.1.0",
-  "description": "Next.js helpers for publishing AgentNav metadata files.",
+  "description": "Next.js route helpers for publishing llms.txt, agent.json, actions.json, and JSON-LD for AI agent-ready sites.",
   "type": "module",
+  "license": "MIT",
+  "author": "AgentNav contributors",
+  "homepage": "https://github.com/mido18/agentnav#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mido18/agentnav.git",
+    "directory": "packages/next"
+  },
+  "bugs": {
+    "url": "https://github.com/mido18/agentnav/issues"
+  },
+  "keywords": [
+    "nextjs",
+    "react",
+    "ai-agents",
+    "agent-readiness",
+    "llms-txt",
+    "well-known",
+    "json-ld",
+    "typescript",
+    "seo"
+  ],
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -12,6 +34,14 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
     }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "package.json"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "build": "tsup",

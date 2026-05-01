@@ -2,8 +2,30 @@
   "name": "agentnav",
   "version": "0.1.0",
   "private": true,
-  "description": "Agent-readiness layer for websites.",
+  "description": "Lighthouse for AI agents. Make React and Next.js websites readable, navigable, actionable, and safer for AI agents.",
   "type": "module",
+  "license": "MIT",
+  "author": "AgentNav contributors",
+  "homepage": "https://github.com/mido18/agentnav#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mido18/agentnav.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mido18/agentnav/issues"
+  },
+  "keywords": [
+    "react",
+    "nextjs",
+    "ai-agents",
+    "llms-txt",
+    "json-ld",
+    "developer-tools",
+    "typescript",
+    "seo",
+    "accessibility",
+    "agent-readiness"
+  ],
   "scripts": {
     "build": "pnpm -r --filter './packages/**' build && pnpm --filter next-real-estate build",
     "test": "pnpm -r --filter './packages/**' test",

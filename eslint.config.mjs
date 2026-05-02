@@ -16,6 +16,19 @@ export default [
   ...tseslint.configs.recommended,
   prettier,
   {
+    files: ["scripts/**/*.mjs"],
+    languageOptions: {
+      globals: {
+        Buffer: "readonly",
+        console: "readonly",
+        fetch: "readonly",
+        process: "readonly",
+        setTimeout: "readonly",
+        window: "readonly"
+      }
+    }
+  },
+  {
     files: ["**/*.{ts,tsx}"],
     rules: {
       "no-undef": "off",

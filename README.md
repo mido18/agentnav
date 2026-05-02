@@ -324,6 +324,27 @@ pnpm exec playwright install chromium
 pnpm test:e2e
 ```
 
+## Manual npm Publish
+
+Publish packages in dependency order:
+
+```bash
+cd packages/core
+npm publish --access public
+
+cd ../scanner
+npm publish --access public
+
+cd ../react
+npm publish --access public
+
+cd ../next
+npm publish --access public
+
+cd ../cli
+npm publish --access public
+```
+
 ## Launch Materials
 
 Launch copy, release notes, outreach templates, the demo script, and the social card live in `docs/marketing/`.
